@@ -17,7 +17,7 @@ class Contact{
     }
 
     // read products
-function read(){
+function readAll(){
 
     // select all query
     $query = "SELECT
@@ -26,6 +26,28 @@ function read(){
 
     // prepare query statement
     $stmt = $this->conn->prepare($query);
+
+    // execute query
+    $stmt->execute();
+
+    return $stmt;
+}
+
+function read($id){
+
+    // select all query
+    $query = "SELECT
+                id, name , phone
+              FROM " . $this->table_name ."
+              WHERE id = :id " ;
+
+    // prepare query statement
+    $stmt = $this->conn->prepare($query);
+
+    $this->id=htmlspecialchars(strip_tags($id));
+
+ // bind values
+    $stmt->bindParam(":id", $this->id);
 
     // execute query
     $stmt->execute();
@@ -62,5 +84,39 @@ function create(){
 
     return false;
 
+}
+
+// update the product
+function update(){
+
+    // update query
+    $query = "UPDATE
+                " . $this->table_name . "
+            SET
+                name = :name,
+                phone = :phone
+            WHERE
+                id = :id";
+
+    // prepare query statement
+    $stmt = $this->conn->prepare($query);
+
+    // sanitize
+    $this->name=htmlspecialchars(strip_tags($this->name));
+    $this->phone=htmlspecialchars(strip_tags($this->phone));
+    $this->id=htmlspecialchars(strip_tags($this->id));
+
+    // bind new values
+    $stmt->bindParam(':name', $this->name);
+    $stmt->bindParam(':phone', $this->phone);
+    $stmt->bindParam(':id', $this->id);
+
+    
+    // execute the query
+    if($stmt->execute()){
+        return true;
+    }
+
+    return false;
 }
 }

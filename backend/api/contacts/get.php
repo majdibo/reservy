@@ -2,6 +2,7 @@
 // required headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Methods: GET");
 
 // include database and object files
 include_once '../../config/database.php';
@@ -14,8 +15,14 @@ $db = $database->getConnection();
 // initialize object
 $product = new Contact($db);
 
+// set ID property of record to read
+if(isset($_GET['id'])){
+    $stmt = $product->read($_GET['id']);
+} else {
+    $stmt = $product->readAll();
+}
+
 // query products
-$stmt = $product->read();
 $num = $stmt->rowCount();
 
 // check if more than 0 record found
