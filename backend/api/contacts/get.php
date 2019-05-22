@@ -8,29 +8,29 @@ header("Access-Control-Allow-Methods: GET");
 include_once '../../config/database.php';
 include_once './contact.php';
 
-// instantiate database and product object
+// instantiate database and resource object
 $database = new Database();
 $db = $database->getConnection();
 
 // initialize object
-$product = new Contact($db);
+$resource = new Contact($db);
 
 // set ID property of record to read
 if(isset($_GET['id'])){
-    $stmt = $product->read($_GET['id']);
+    $stmt = $resource->read($_GET['id']);
 } else {
-    $stmt = $product->readAll();
+    $stmt = $resource->readAll();
 }
 
-// query products
+// query resources
 $num = $stmt->rowCount();
 
 // check if more than 0 record found
 if($num>0){
 
-    // products array
-    $products_arr=array();
-    $products_arr["records"]=array();
+    // resources array
+    $resources_arr=array();
+    $resources_arr["records"]=array();
 
     // retrieve our table contents
     // fetch() is faster than fetchAll()
@@ -41,27 +41,27 @@ if($num>0){
         // just $name only
         extract($row);
 
-        $product_item=array(
+        $resource_item=array(
             "id" => $id,
             "name" => $name,
             "phone" => $phone
         );
 
-        array_push($products_arr["records"], $product_item);
+        array_push($resources_arr["records"], $resource_item);
     }
 
     // set response code - 200 OK
     http_response_code(200);
 
-    // show products data in json format
-    echo json_encode($products_arr);
+    // show resources data in json format
+    echo json_encode($resources_arr);
 }else{
 
     // set response code - 404 Not found
     http_response_code(404);
 
-    // tell the user no products found
+    // tell the user no resources found
     echo json_encode(
-        array("message" => "No contacts found.")
+        array("message" => "No resources found.")
     );
 }

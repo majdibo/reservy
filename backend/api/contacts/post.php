@@ -14,59 +14,59 @@ include_once './contact.php';
 $database = new Database();
 $db = $database->getConnection();
 
-// prepare product object
-$product = new Contact($db);
+// prepare resource object
+$resource = new Contact($db);
 
-// get id of product to be edited
+// get id of resource to be edited
 $data = json_decode(file_get_contents("php://input"));
 
 
 
-// set product property values
-$product->name = $data->name;
-$product->phone = $data->phone;
+// set resource property values
+$resource->name = $data->name;
+$resource->phone = $data->phone;
 
-// update the product
+// update the resource
 if($data->id){
-    // set ID property of product to be edited
-    $product->id = $data->id;
+    // set ID property of resource to be edited
+    $resource->id = $data->id;
 
-    if($product->update()){
+    if($resource->update()){
 
         // set response code - 200 ok
         http_response_code(200);
 
         // tell the user
-        echo json_encode(array("message" => "Product was updated."));
+        echo json_encode(array("message" => "resource was updated."));
     }
 
-    // if unable to update the product, tell the user
+    // if unable to update the resource, tell the user
     else{
 
         // set response code - 503 service unavailable
         http_response_code(503);
 
         // tell the user
-        echo json_encode(array("message" => "Unable to update product $product->id."));
+        echo json_encode(array("message" => "Unable to update resource $resource->id."));
     }
 } else {
-    if($product->create()){
+    if($resource->create()){
 
         // set response code - 200 ok
         http_response_code(201);
 
         // tell the user
-        echo json_encode(array("message" => "Product was created."));
+        echo json_encode(array("message" => "resource was created."));
     }
 
-    // if unable to update the product, tell the user
+    // if unable to update the resource, tell the user
     else{
 
         // set response code - 503 service unavailable
         http_response_code(503);
 
         // tell the user
-        echo json_encode(array("message" => "Unable to create product."));
+        echo json_encode(array("message" => "Unable to create resource."));
     }
 }
 ?>

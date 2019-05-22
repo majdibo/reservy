@@ -9,13 +9,13 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 // get database connection
 include_once '../../config/database.php';
 
-// instantiate product object
+// instantiate resource object
 include_once './contact.php';
 
 $database = new Database();
 $db = $database->getConnection();
 
-$product = new Contact($db);
+$resource = new Contact($db);
 
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
@@ -27,12 +27,12 @@ if(
 ){
 
     // set contact property values
-    $product->name = $data->name;
-    $product->phone = $data->phone;
+    $resource->name = $data->name;
+    $resource->phone = $data->phone;
 
 
-    // create the product
-    if($product->create()){
+    // create the resource
+    if($resource->create()){
 
         // set response code - 201 created
         http_response_code(201);
@@ -41,7 +41,7 @@ if(
         echo json_encode(array("message" => "Contact was created."));
     }
 
-    // if unable to create the product, tell the user
+    // if unable to create the resource, tell the user
     else{
 
         // set response code - 503 service unavailable
