@@ -10,11 +10,11 @@ class Contact extends Resource{
     public $name;
     public $phone;
 
-    function readAllQuery(){ return "SELECT  id, name , phone FROM " . $this->table_name ;}
-    function readQuery(){return "SELECT  id, name , phone FROM " . $this->table_name ." WHERE id = :id " ;}
-    function createQuery(){return  "INSERT INTO " . $this->table_name . " SET name=:name, phone=:phone";}
-    function updateQuery(){return "UPDATE " . $this->table_name . " SET name = :name, phone = :phone WHERE id = :id";}
-    function deleteQuery(){return "DELETE FROM " . $this->table_name . " WHERE id = ?";}
+    function readAllQuery(){ return "SELECT  id, name , phone FROM {$this->table_name}" ;}
+    function readQuery(){return "SELECT  id, name , phone FROM {$this->table_name} WHERE id = :id " ;}
+    function createQuery(){return  "INSERT INTO {$this->table_name} SET name=:name, phone=:phone";}
+    function updateQuery(){return "UPDATE {$this->table_name} SET name=:name, phone=:phone WHERE id = :id";}
+    function deleteQuery(){return "DELETE FROM {$this->table_name} WHERE id = ?";}
 
     public function bindParams($stmt){
             // sanitize
