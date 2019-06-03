@@ -21,7 +21,7 @@ class Client extends Resource{
             // sanitize
         $this->name=htmlspecialchars(strip_tags($this->name));
         $this->type=htmlspecialchars(strip_tags($this->type));
-        $this->type=htmlspecialchars(strip_tags($this->contact_id));
+        $this->contact_id=htmlspecialchars(strip_tags($this->contact_id));
         // bind values
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":type", $this->type, PDO::PARAM_INT);

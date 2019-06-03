@@ -5,7 +5,7 @@ class Database{
     private $host = "remotemysql.com";
     private $db_name = "GrLfE2lGIK";
     private $username = "GrLfE2lGIK";
-    private $password = "PIP6xT7I3g";
+    private $password = "Twi4yTO3TA";
     public $conn;
 
     // get the database connection
