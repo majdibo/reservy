@@ -32,8 +32,8 @@ import { BaseUrlInterceptor } from './base-url.interceptor';
   bootstrap: [AppComponent],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
-    { provide: "BASE_API_URL", useValue: environment.apiUrl },
-    { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true, },
+    { provide: 'BASE_API_URL', useValue: environment.apiUrl },
+    { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
   ],
 })
 export class AppModule {
