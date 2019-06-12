@@ -1,5 +1,5 @@
 <?php
-require_once('../../common/resource.php');
+require_once '../core/common/resource.php';
 
 class Client extends Resource{
 

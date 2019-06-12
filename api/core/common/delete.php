@@ -1,6 +1,6 @@
 <?php
 
-function delete($classType){
+function delete($classType, $id){
 
 // required headers
 header("Access-Control-Allow-Origin: *");
@@ -10,7 +10,7 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 // include database and object file
-include_once '../../config/database.php';
+include_once '../core/config/database.php';
 
 
 // get database connection
@@ -21,9 +21,9 @@ $db = $database->getConnection();
 $resource = new $classType($db);
 
 // get resource id
-if(isset($_GET['id'])){
+if(isset($id)){
     // set resource id to be deleted
-    $resource->id = $_GET['id'];
+    $resource->id = $id;
 
     // delete the resource
     if($resource->delete()){

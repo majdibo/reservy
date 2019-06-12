@@ -1,12 +1,13 @@
 <?php
-function get($classType, $items){
+
+function get($classType, $items, $id =false){
 // required headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: GET");
 
 // include database and object files
-include_once '../../config/database.php';
+include_once '../core/config/database.php';
 
 // instantiate database and resource object
 $database = new Database();
@@ -16,8 +17,8 @@ $db = $database->getConnection();
 $resource = new $classType($db);
 
 // set ID property of record to read
-if(isset($_GET['id'])){
-    $stmt = $resource->read($_GET['id']);
+if($id){
+    $stmt = $resource->read($id);
 } else {
     $stmt = $resource->readAll();
 }
