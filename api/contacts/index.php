@@ -1,10 +1,5 @@
 <?php
-require '../core/vendor/autoload.php';
-
-require '../core/common/get.php';
-require '../core/common/post.php';
-require '../core/common/put.php';
-require '../core/common/delete.php';
+include '../core/utils/header.php';
 
 require './contact.php';
 
@@ -30,4 +25,4 @@ Flight::route('PUT /', function(){
 
 Flight::route('DELETE /@id', function($id){delete(Contact::class, $id);});
 
-Flight::start();
+include '../core/utils/publish.php';

@@ -8,27 +8,27 @@ import { Client } from './client';
 })
 export class ClientService {
 
-  private baseUrl = 'https://8080-c5ec6ac3-212b-4692-85fa-8c84207af3ff.ws-eu0.gitpod.io/backend/api/clients';
+  private baseUrl = 'https://8080-c5ec6ac3-212b-4692-85fa-8c84207af3ff.ws-eu0.gitpod.io/api/clients';
 
   constructor(private http: HttpClient) { }
 
   get(id: number): Observable<Object> {
-    return this.http.get(`${this.baseUrl}/get.php?id=${id}`);
+    return this.http.get(`${this.baseUrl}/${id}`);
   }
 
-  create(client: Client): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/put.php`, JSON.stringify(client));
+  create(value: Client): Observable<Object> {
+    return this.http.put(`${this.baseUrl}`, JSON.stringify(value));
   }
 
   update(value: Client): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/post.php`, JSON.stringify(value));
+    return this.http.post(`${this.baseUrl}`, JSON.stringify(value));
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/delete.php?id=${id}`, { responseType: 'text' });
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
 
   getList(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/get.php`);
+    return this.http.get(`${this.baseUrl}`);
   }
 }

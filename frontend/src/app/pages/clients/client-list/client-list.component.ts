@@ -54,9 +54,13 @@ export class ClientListComponent implements OnInit {
   }
 
   onCreateConfirm(event): void {
-    this.clientService.create(event.newData).subscribe(res => event.newData.id = res);
-    this.reload();
-    event.confirm.resolve();
+    this.clientService.create(event.newData).subscribe(res => {
+      event.newData.id = res;
+      event.confirm.resolve();
+      this.reload();
+    });
+
+
   }
 
   onSaveConfirm(event): void {
