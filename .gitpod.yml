@@ -1,5 +1,5 @@
 tasks:
   - init: cd frontend && npm install
-    command: npm install -g @angular/cli
+    command: npm install -g @angular/cli:7.3.9
   - command: alias frontend='cd /workspace/reservy/frontend && npm start'
   - command: alias backend='cd /workspace/reservy && php -S localhost:8080'

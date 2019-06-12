@@ -10,4 +10,5 @@
 
 export const environment = {
   production: false,
+  apiUrl: "https://8080-c5ec6ac3-212b-4692-85fa-8c84207af3ff.ws-eu0.gitpod.io/api",
 };
