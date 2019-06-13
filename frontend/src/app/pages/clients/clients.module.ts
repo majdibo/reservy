@@ -6,11 +6,12 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ClientsRoutingModule } from './clients-routing.module';
 import { ClientsComponent } from './clients.component';
 import { ClientListComponent } from './client-list/client-list.component';
-import { ClientCreateComponent } from './client-create/client-create.component';
-import { ClientDetailsComponent } from './client-details/client-details.component';
 
 @NgModule({
-  declarations: [ClientsComponent, ClientListComponent, ClientCreateComponent, ClientDetailsComponent],
+  declarations: [
+    ClientsComponent,
+    ClientListComponent,
+  ],
   imports: [
     CommonModule,
     ThemeModule,
