@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 
 import { ClientService } from '../client.service';
+import { ContactService } from '../contacts/contact.service';
 
 @Component({
   selector: 'mw-client-list',
@@ -10,46 +11,24 @@ import { ClientService } from '../client.service';
 })
 export class ClientListComponent implements OnInit {
 
-  settings = {
-    add: {
-      addButtonContent: '<i class="nb-plus"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-      confirmCreate: true,
-    },
-    edit: {
-      editButtonContent: '<i class="nb-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-      confirmSave: true,
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
-    },
-    columns: {
+  settings: any = {
+                        add: {
+                          addButtonContent: '<i class="nb-plus"></i>',
+                        },
 
-      name: {
-        title: 'Name',
-        type: 'string',
-      },
-      type: {
-        title: 'Type',
-        type: 'string',
-      },
-      contact_id: {
-        title: 'Contact',
-        type: 'string',
-      },
-    },
-  };
+                        pager: {
+                                display: true,
+                                perPage: 10,
+                        },
+                      };
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private clientService: ClientService) {
-  }
+  constructor(private clientService: ClientService,
+              private contactService: ContactService) {}
 
   ngOnInit() {
+    this.buildSettings();
     this.reload();
   }
 
@@ -80,5 +59,59 @@ export class ClientListComponent implements OnInit {
   reload(): void {
     this.clientService.getList()
     .subscribe(data => this.source.load(data.records));
+  }
+
+  buildSettings(): void {
+    this.contactService.getList().subscribe(
+          value => {
+            this.settings = {
+                        add: {
+                          addButtonContent: '<i class="nb-plus"></i>',
+                          createButtonContent: '<i class="nb-checkmark"></i>',
+                          cancelButtonContent: '<i class="nb-close"></i>',
+                          confirmCreate: true,
+                        },
+
+                        edit: {
+                          editButtonContent: '<i class="nb-edit"></i>',
+                          saveButtonContent: '<i class="nb-checkmark"></i>',
+                          cancelButtonContent: '<i class="nb-close"></i>',
+                          confirmSave: true,
+                        },
+                        delete: {
+                          deleteButtonContent: '<i class="nb-trash"></i>',
+                          confirmDelete: true,
+                        },
+                        columns: {
+
+                          name: {
+                            title: 'Name',
+                            type: 'string',
+                          },
+                          type: {
+                            title: 'Type',
+                            type: 'string',
+                          },
+                          contact_id: {
+                            title: 'Contact',
+                            valuePrepareFunction: (cell, _) => value.records.find(contact => contact.id === cell).name ,
+                            editor: {
+                              type: 'completer',
+                              config: {
+                                completer: {
+                                  data: value.records,
+                                  searchFields: 'name',
+                                  titleField: 'id',
+                                  descriptionField: 'name',
+                                },
+                              },
+                            },
+                          },
+                        },
+
+
+                      };
+          });
+
   }
 }
