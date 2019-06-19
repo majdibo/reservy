@@ -3,6 +3,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 
 import { ClientService } from '../client.service';
 import { ContactService } from '../contacts/contact.service';
+import { ClientType } from '../client';
 
 @Component({
   selector: 'mw-client-list',
@@ -11,6 +12,7 @@ import { ContactService } from '../contacts/contact.service';
 })
 export class ClientListComponent implements OnInit {
 
+// settings has to be initialized with at least these values ...
   settings: any = {
                         add: {
                           addButtonContent: '<i class="nb-plus"></i>',
@@ -91,6 +93,17 @@ export class ClientListComponent implements OnInit {
                           type: {
                             title: 'Type',
                             type: 'string',
+                            valuePrepareFunction: (cell,_) => ClientType[cell],
+                            editor: {
+                                type: 'list',
+                                config: {
+                                  list: [
+                                    {value:ClientType.PHYSIC  ,title:ClientType[ClientType.PHYSIC]},
+                                    {value:ClientType.MORAL  ,title:ClientType[ClientType.MORAL]},
+                                  ],
+                                }
+                              },
+                            //*/
                           },
                           contact_id: {
                             title: 'Contact',
