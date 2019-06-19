@@ -60,7 +60,7 @@ export class ClientListComponent implements OnInit {
 
   reload(): void {
     this.clientService.getList()
-    .subscribe(data => this.source.load(data.records));
+    .subscribe(data => this.source.load(data.records || []));
   }
 
   buildSettings(): void {
@@ -93,17 +93,16 @@ export class ClientListComponent implements OnInit {
                           type: {
                             title: 'Type',
                             type: 'string',
-                            valuePrepareFunction: (cell,_) => ClientType[cell],
+                            valuePrepareFunction: (cell, _) => ClientType[cell],
                             editor: {
                                 type: 'list',
                                 config: {
                                   list: [
-                                    {value:ClientType.PHYSIC  ,title:ClientType[ClientType.PHYSIC]},
-                                    {value:ClientType.MORAL  ,title:ClientType[ClientType.MORAL]},
+                                    {value: ClientType.PHYSIC, title: ClientType[ClientType.PHYSIC]},
+                                    {value: ClientType.MORAL, title: ClientType[ClientType.MORAL]},
                                   ],
-                                }
+                                },
                               },
-                            //*/
                           },
                           contact_id: {
                             title: 'Contact',

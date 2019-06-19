@@ -7,6 +7,7 @@ const routes: Routes = [{
   path: '',
   component: ClientsComponent,
   children: [
+    {path: 'contacts', loadChildren: './contacts/contacts.module#ContactsModule' },
     {path: '', component: ClientListComponent},
     {
       path: '',

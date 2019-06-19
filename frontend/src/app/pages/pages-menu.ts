@@ -13,7 +13,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     group: true,
   },
   {
-    title: 'Clients',
+    title: 'Thirdparties',
     icon: 'nb-plus',
     link: '/pages/clients',
   },
