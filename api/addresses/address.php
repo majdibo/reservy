@@ -17,7 +17,7 @@ class Address extends Resource{
 
     public function bindParams($stmt){
             // sanitize
-        $this->name=htmlspecialchars(strip_tags($this->location));
+        $this->location=htmlspecialchars(strip_tags($this->location));
 
         // bind values
         $stmt->bindParam(":location", $this->location);

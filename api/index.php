@@ -7,7 +7,11 @@ Flight::route('GET /', function(){
     Flight::json([
         "_links" => [
             "clients"=> $url."/clients",
-            "contacts" => $url."/contacts"
+            "contacts" => $url."/contacts",
+            "bills" => $url."/bills",
+            "addresses" => $url."/addresses",
+            "packages" => $url."/packages",
+            "reservations" => $url."/reservations",
         ],
     ]);
 });
