@@ -2,7 +2,7 @@
 
 function get($classType, $items, $id =false){
 // include database and object files
-include_once '../core/config/database.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/api/core/config/database.php';
 
 // instantiate database and resource object
 $database = new Database();

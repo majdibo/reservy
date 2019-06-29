@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "abb6ebe33cbb979ad3a0d50b308f9c90",
+    "content-hash": "fe90a70ee564d4b18df4720032a9e999",
     "packages": [
         {
             "name": "mikecao/flight",
@@ -56,6 +56,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-json": "*",
+        "ext-curl": "*"
+    },
     "platform-dev": []
 }

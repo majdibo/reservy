@@ -3,7 +3,7 @@
 function delete($classType, $id){
 
 // include database and object file
-include_once '../core/config/database.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/api/core/config/database.php';
 
 
 // get database connection

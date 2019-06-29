@@ -3,7 +3,7 @@
 function put($data, $classType, $buildResource){
 
 // get database connection
-include_once '../core/config/database.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/api/core/config/database.php';
 
 $database = new Database();
 $db = $database->getConnection();

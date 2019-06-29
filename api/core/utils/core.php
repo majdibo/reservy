@@ -47,4 +47,3 @@ function perform_http_request($method, $rel_url, $data = false)
     return $result;
 }
 
-?>

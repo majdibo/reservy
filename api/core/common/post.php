@@ -2,7 +2,7 @@
 function post($data, $classType, $buildResource){
 
 // include database and object files
-include_once '../core/config/database.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/api/core/config/database.php';
 
 // get database connection
 $database = new Database();
