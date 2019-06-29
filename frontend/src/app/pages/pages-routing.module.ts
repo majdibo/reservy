@@ -18,6 +18,10 @@ const routes: Routes = [{
       loadChildren: './clients/clients.module#ClientsModule',
     },
     {
+      path: 'reservations',
+      loadChildren: './reservations/reservations.module#ReservationsModule',
+    },
+    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',

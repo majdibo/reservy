@@ -4,7 +4,7 @@ import { ContactService } from '../contact.service';
 
 @Component({
   selector: 'mw-contact-list',
-  templateUrl: './contact-list.component.html'
+  templateUrl: './contact-list.component.html',
 })
 export class ContactListComponent implements OnInit {
 

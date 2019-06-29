@@ -14,8 +14,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Thirdparties',
-    icon: 'nb-plus',
+    icon: 'nb-person',
     link: '/pages/clients',
+  },
+  {
+    title: 'Reservations',
+    icon: 'nb-compose',
+    link: '/pages/reservations',
   },
   {
     title: 'Auth',
