@@ -1,3 +1,28 @@
-<p>
-  reservation-quick works!
-</p>
+<form class="form" role="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <fieldset>
+    <div class="row " id="outer">
+      <div id="inner" class="col-lg-6">
+        <nb-card>
+          <nb-card-header>Add Reservation</nb-card-header>
+          <nb-card-body>
+            <div class=" form-group ">
+              <label>Address</label>
+              <input type="text" placeholder="Address" nbInput class="form-control" [formControl]="form.controls['address_id']"
+                     [ngClass]="{'form-control-danger': form.controls['address_id'].hasError('required')  && form.controls['note'].touched}"/>
+              <div class="m-1" *ngIf="form.controls['address_id'].hasError('required') && form.controls['address_id'].touched">Note is required</div>
+            </div>
+            <div class=" form-group ">
+              <label>Note</label>
+              <div class="input-group">
+                <textarea class="form-control" rows="5"  nbInput fullWidth placeholder="Note" [formControl]="form.controls['note']"></textarea>
+              </div>
+            </div>
+            <div class="float-right">
+              <button type="submit" [disabled]="!form.valid" class="btn btn-primary btn-md">Save</button>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+  </fieldset>
+</form>

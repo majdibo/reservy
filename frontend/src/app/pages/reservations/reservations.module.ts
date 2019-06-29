@@ -12,7 +12,7 @@ import { ReservationQuickComponent } from './reservation-quick/reservation-quick
   imports: [
     CommonModule,
     ThemeModule,
-    ReservationsRoutingModule
-  ]
+    ReservationsRoutingModule,
+  ],
 })
 export class ReservationsModule { }
