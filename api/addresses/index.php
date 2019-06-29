@@ -1,7 +1,7 @@
 <?php
-include '../core/utils/header.php';
+include $_SERVER['DOCUMENT_ROOT'].'/api/core/utils/header.php';
 
-require './address.php';
+require $_SERVER['DOCUMENT_ROOT'].'/api/addresses/address.php';
 
 Flight::route('GET /', function(){get(Address::class, array("id", "location") );});
 

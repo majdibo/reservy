@@ -1,7 +1,7 @@
 <?php
-include '../core/utils/header.php';
+include $_SERVER['DOCUMENT_ROOT'].'/api/core/utils/header.php';
 
-require './reservation.php';
+require $_SERVER['DOCUMENT_ROOT'].'/api/reservations/reservation.php';
 
 Flight::route('GET /', function(){get(Reservation::class, array("id", "address_id", "client_id", "package_id", "bill_id", "status", "start_date", "end_date", "note") );});
 

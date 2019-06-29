@@ -1,5 +1,5 @@
 <?php
-require_once('../core/common/resource.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/api/core/common/resource.php');
 
 class Bill extends Resource{
 

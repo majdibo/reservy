@@ -1,7 +1,7 @@
 <?php
-include '../core/utils/header.php';
+include $_SERVER['DOCUMENT_ROOT'].'/api/core/utils/header.php';
 
-require './package.php';
+require $_SERVER['DOCUMENT_ROOT'].'/api/packages/package.php';
 
 Flight::route('GET /', function(){get(Package::class, array("id", "name","description","prix") );});
 

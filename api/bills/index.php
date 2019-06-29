@@ -1,7 +1,7 @@
 <?php
-include '../core/utils/header.php';
+include $_SERVER['DOCUMENT_ROOT'].'/api/core/utils/header.php';
 
-require './bill.php';
+require $_SERVER['DOCUMENT_ROOT'].'/api/bills/bill.php';
 
 Flight::route('GET /', function(){get(Bill::class, array("id", "amount", "paid_amount") );});
 
